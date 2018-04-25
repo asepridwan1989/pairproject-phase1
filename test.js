@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 const express = require('express')
 const router = express()
 // const bodyParser = require('body-parser')
@@ -20,13 +20,4 @@ User.findAll({
       console.log('========================>data',alldata)
     })
 }) 
-=======
-var bcrypt = require('bcrypt');
-const saltRounds = 10;
-const myPlaintextPassword = '!n1P@5sW0rd';
-const someOtherPlaintextPassword = 'not_bacon';
 
-bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
-    // Store hash in your password DB.
-  });
->>>>>>> 96501fbb1ee8bc64ce89df8167c9d5dd25450a3f

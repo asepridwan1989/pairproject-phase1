@@ -21,13 +21,6 @@ app.set('view engine', 'ejs')
 // ROUTING
 const register = require('./routes/register')
 const robot = require('./routes/robot/robot')
-<<<<<<< HEAD
-
-
-
-app.use('/robot', robot)
-=======
->>>>>>> 96501fbb1ee8bc64ce89df8167c9d5dd25450a3f
 
 app.get('/', function(req,res){
     res.render('login')
@@ -58,5 +51,9 @@ app.post('/', function(req,res){
 app.use('/register', register)
 app.use('/robot', robot)
 
+
+app.use('/register', authentication, register)
+app.use('/robot', authentication, robot)
+app.use('/logout', logout)
 
 app.listen(3000, () => console.log('app listening on port 3000!'))
