@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
-
-app.set('view engine', 'ejs')
+const bodyParser = require('body-parser');
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({extended:false}));
 
 // app.get('/', (req, res) => res.send('Hello World!'))
 const robot = require('./routes/robot/robot')
