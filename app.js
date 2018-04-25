@@ -1,5 +1,8 @@
 const express = require('express')
 const app = express()
+
+// app.get('/', (req, res) => res.send('Hello World!'))
+const robot = require('./routes/robot/robot')
 const bodyParser = require('body-parser')
 
 
@@ -13,7 +16,6 @@ app.set('view engine', 'ejs')
 
 // routing
 const register = require('./routes/register')
-const robot = require('./routes/robot')
 
 app.get('/', function(req,res){
     res.render('index')
