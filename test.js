@@ -18,4 +18,4 @@ User.findAll({
       console.log('=========================>user',robotUser)
       console.log('========================>data',alldata)
     })
-})
+}) 
