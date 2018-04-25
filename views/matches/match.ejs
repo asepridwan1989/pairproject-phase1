@@ -1,0 +1,33 @@
+
+<% include ../partials/header.ejs%>
+
+<div class="container">
+    <h2>Robot Battle</h2>
+    <p>list of Battle</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Battle Name</th>
+          <th>Battle Location</th>
+          <th>Battle Date</th>
+          <th>Bet Point</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% matches.forEach(function(match){ %>
+          <tr>
+              <td><%= match.id%></td>
+              <td><%= match.name%></td>
+              <td><%= match.location%></td>
+              <td><%= match.dateBattle%></td>
+              <td><%= match.betPoint%></td>
+              <td><%= match.status%></td>
+            </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+
+<% include ../partials/header.ejs%>

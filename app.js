@@ -21,6 +21,7 @@ app.set('view engine', 'ejs')
 // ROUTING
 const register = require('./routes/register')
 const robot = require('./routes/robot/robot')
+
 const logout = require('./routes/logout')
 
 app.get('/', function(req,res){
@@ -48,6 +49,7 @@ app.post('/', function(req,res){
     .catch( error => {
         res.send('ini error findOne')
     })
+
 
 })
 
