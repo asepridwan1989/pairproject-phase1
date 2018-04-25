@@ -1,0 +1,43 @@
+
+<% include ../partials/header.ejs%>
+
+<div class="container">
+    <h2>ROBOTS</h2>
+    <p>list of Robot</p>
+
+  <form action='/robot/robot-search' method='post'>
+   <p>Search by:
+   <select name='search_type'>
+       <option value="name">name</option>
+       <option value="menu_type">menu_type</option>
+       <option value="rating">rating</option>
+       <option value="price">price</option>
+   </select>
+   Keyword:
+   <input type='text' name='search'></p>
+   <input type='submit' value='Submit'>
+   </form>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Robot Name</th>
+          <th>User Name</th>
+          <th>Winner Rate</th>
+          <th>Price estimation</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% robots.forEach(function(robot){ %>
+          <tr>
+              <td><%= robot.id%></td>
+              <td><%= robot.name%></td>
+            </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+
+<% include ../partials/header.ejs%>
