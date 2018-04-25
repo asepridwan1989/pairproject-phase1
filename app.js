@@ -6,6 +6,9 @@ app.use(bodyParser.urlencoded({extended:false}));
 
 // app.get('/', (req, res) => res.send('Hello World!'))
 const robot = require('./routes/robot/robot')
+
+
+
 app.use('/robot', robot)
 
 
