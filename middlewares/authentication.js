@@ -1,8 +1,14 @@
 const authentication = (req,res,next) => {
 
-// if(req.session)
-    // res.send('ini sudah masuk ke authentication')
-    console.log(req.session.email);
+    // res.send(req.session.userName)
+    // console.log('ini sudah di authentication', req.session.userName);
+    if(req.session.userName){
+        next()
+    }
+    else{
+        // res.send('anda tidak memiliki akses halaman ini')
+        res.redirect('/')
+    }
     
 }
 
