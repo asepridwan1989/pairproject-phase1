@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Robot.associate = function(models) {
     // associations can be defined here
+    Robot.belongsTo(models.User)
   };
   return Robot;
 };

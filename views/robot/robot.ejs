@@ -1,0 +1,29 @@
+
+<% include ../partials/header.ejs%>
+
+<div class="container">
+    <h2>ROBOTS</h2>
+    <p>list of Robot</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Robot Name</th>
+          <th>User Name</th>
+          <th>Winner Rate</th>
+          <th>Price estimation</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% robots.forEach(function(robot){ %>
+          <tr>
+              <td><%= robot.id%></td>
+              <td><%= robot.name%></td>
+            </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+
+<% include ../partials/header.ejs%>
