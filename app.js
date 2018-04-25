@@ -22,8 +22,6 @@ app.set('view engine', 'ejs')
 const register = require('./routes/register')
 const robot = require('./routes/robot/robot')
 
-const logout = require('./routes/logout')
-
 app.get('/', function(req,res){
     res.render('login')
 })
@@ -40,7 +38,6 @@ app.post('/', function(req,res){
             req.session.userName = user.id
             req.session.userName = user.userName
             res.render('home')
-            // authentication(req,res)
         }
         else{
             res.send('login gagal')
@@ -50,8 +47,10 @@ app.post('/', function(req,res){
         res.send('ini error findOne')
     })
 
-
 })
+app.use('/register', register)
+app.use('/robot', robot)
+
 
 app.use('/register', authentication, register)
 app.use('/robot', authentication, robot)
