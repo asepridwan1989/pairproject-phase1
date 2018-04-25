@@ -17,6 +17,7 @@ app.use(session({
 
 app.set('view engine', 'ejs')
 
+
 // ROUTING
 const register = require('./routes/register')
 const robot = require('./routes/robot/robot')
