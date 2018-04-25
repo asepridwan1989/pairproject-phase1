@@ -1,4 +1,7 @@
 'use strict';
+
+const { sequelize } = require('../models')
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Robots', {
@@ -15,12 +18,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: sequelize.literal('NOW()')
       },
       updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: sequelize.literal('NOW()')
       }
     });
   },
