@@ -33,6 +33,7 @@ const register = require('./routes/register')
 const robot = require('./routes/robot/robot')
 const logout = require('./routes/logout') 
 const user = require('./routes/users/user')
+const bot = require('./routes/robot')
 
 app.get('/', function(req,res){
     // res.render('login', {fail:0})
@@ -41,6 +42,7 @@ app.get('/', function(req,res){
             console.log(fail.msg)
             res.render('login', {fail})
 })
+
 app.post('/', function(req,res){
     // res.send(req.body)
     model.User.findOne({
@@ -76,9 +78,10 @@ app.post('/', function(req,res){
 
 })
 
-app.use('/register', authentication, register)
+app.use('/register', register)
 app.use('/robot', authentication, robot)
 app.use('/logout', logout)
 app.use('/user', authentication, user)
+app.use('/bot', authentication, bot)
 
 app.listen(3000, () => console.log('ini server, app listening on port 3000!'))
