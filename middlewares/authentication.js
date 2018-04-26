@@ -1,11 +1,15 @@
 const authentication = (req,res,next) => {
-
+    // res.send('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>',req.session)
     if(req.session.userName){
+        // res.send(req.session)
         next()
+
     }
     else{
         // res.send('anda tidak memiliki akses halaman ini')
-        res.redirect('/')
+        let msg = "Silakan login terlebih dahulu!!!"
+            let fail = {msg: msg}
+            res.render('login', {fail})
     }
 
     
