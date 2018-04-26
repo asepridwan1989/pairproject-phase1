@@ -18,15 +18,16 @@ module.exports = (sequelize, DataTypes) => {
     var bcrypt = require('bcrypt');
     const saltRounds = 10;
     const myPlaintextPassword = user.password;
-    // const someOtherPlaintextPassword = 'not_bacon';
 
     var salt = bcrypt.genSaltSync(saltRounds);
     var hash = bcrypt.hashSync(myPlaintextPassword, salt);
  
     user.password = hash
-
   });
 
+  User.prototype.getFormatPoint = function () {
+    return this.battlepoint.toLocaleString();
+  };
 
   return User;
 };

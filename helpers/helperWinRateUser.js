@@ -18,7 +18,13 @@ const winRateUser = function(matches){
         })
     })
 
-    winUserrate = Math.round((winUsercount/battlecount)*100)
+    // battlePoint.toLocaleString()
+    if(battlecount == 0){
+        winUserrate = 0
+    }
+    else{
+        winUserrate = Math.round((winUsercount/battlecount)*100)
+    }
     return {winUserrate, battlePoint}
 
 }
