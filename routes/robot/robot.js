@@ -7,7 +7,7 @@ const Op = Sequelize.Op;
 const {Robot,User} = require('../../models')
 
 router.get('/', function(req,res){
-    // res.send('ini routing robot')
+    // res.send(req.session)
     Robot.findAll({
         include: [User]
     })
