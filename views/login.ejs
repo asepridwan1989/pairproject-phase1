@@ -4,6 +4,10 @@
         <h1>Here.... The Robots Battle Arena</h1>
         <p>Login to Start the Battle</p>
         <p>or.. Die!!!!</p>
+
+        <% if(fail.msg !== 0){ %>
+            <%= fail.msg %>
+        <% }%>
         <div class="row">
           <div class="col-sm-6" style="background-color:lavender;">
             <h3>Login</h3>
