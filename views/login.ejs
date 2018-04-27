@@ -1,16 +1,24 @@
 <% include ./partials/header.ejs%>
 
-<div class="container-fluid">
-        <h1>Here.... The Robots Battle Arena</h1>
-        <p>Login to Start the Battle</p>
-        <p>or.. Die!!!!</p>
+<img src="gundam.jpg" alt="Mountain View" width="500" height="377">
+<!-- <img src="gundam.jpg" style="width:100%"> -->
 
-        <% if(fail.msg !== 0){ %>
-            <%= fail.msg %>
-        <% }%>
+<div class="main">
+<div class="container-fluid">
+        
+        <!-- <div class="row"><h1></h1></div> -->
+
         <div class="row">
-          <div class="col-sm-6" style="background-color:lavender;">
-            <h3>Login</h3>
+           <div class="col-sm-4"></div> 
+           
+          <div class="col-sm-4" style="background-color:rgb(97, 97, 99);">
+                <% if(fail.msg !== 0){ %>
+                    <div class="alert alert-danger">
+                            <strong><%= fail.msg %></strong>
+                          </div>
+                <% }%> 
+                <h3>Robots Battle Arena</h3>
+                <h5>Login to Start the Battle OR Die!!!!</h3>
             <form action="/" method="POST">
                 <div class="form-group">
                     <input type="text" class="form-control" id="email" placeholder="Enter username" name="userName">
@@ -21,12 +29,14 @@
                 </div>
                 <button type="submit" class="btn btn-default">Login</button>
                         <a href="/register">Register</a>
+                        <p></p>
             </form>
               
           </div>
+          <div class="col-sm-4"></div>
         </div>
 </div>
       
-
+</div>
 
 <% include ./partials/footer.ejs%>

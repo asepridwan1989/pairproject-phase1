@@ -2,53 +2,88 @@ const express = require('express')
 const router = express()
 const bodyParser = require('body-parser')
 const model = require('../../models')
+const Sequelize         = require('sequelize');
+const Op = Sequelize.Op
 
 router.get('/', function(req,res){
-    // res.send('ini routing robot')
     model.User.findOne({
         include: [model.Robot],
         where:{
             userName: req.session.userName
         }
     })
-    .then(users => {
-        // res.render('robot',{
-        //     robots: robots
-        //     // User: User
-        // })
-        model.Robot.findAll({
-            include: [model.RobotMatch],
+    .then( user => {
+        let pengguna = user
+        let robots = user.Robots
+        let ids = []
+        for(let i=0; i<robots.length; i++){
+            ids.push(robots[i].id)    
+        }
+        // res.send(ids)
+        model.RobotMatch.findAll({
+            include: [model.Match],
             where: {
-                UserId: users.id
+                RobotId: {
+                    [Op.in]: ids
+                }
             }
         })
-        .then( robotMatch => {
-            model.Robot.findAll({
-                include: [model.Match],
-                where: {
-                    UserId: users.id
-                }
+        .then( robotMatches => {
+            // res.send({
+            //     pengguna:pengguna,
+            //     robotMatches:robotMatches
+            // })
+            res.render('home',{
+                pengguna:pengguna,
+                robotMatches:robotMatches
             })
-            .then( matches => {
-                // res.send({
-                //     users:users,
-                //     robotMatch: robotMatch,
-                //     matches: matches
-                // })
-
-                res.render('home',{
-                    users:users,
-                    robotMatch: robotMatch,
-                    matches: matches
-                })
-
-            })
-
-    
         })
-        
+        .catch(error => {
+            console.log('ngga dapet findAll RobotMatch', error)
+        })
+    })
+    .catch(error => {
+        console.log('ngga dapet findOne user',error)
     })
 })
+
+// router.get('/', function(req,res){
+//     model.User.findOne({
+//         include: [model.Robot],
+//         where:{
+//             userName: req.session.userName
+//         }
+//     })
+//     .then(users => {
+//         model.Robot.findAll({
+//             include: [model.RobotMatch],
+//             where: {
+//                 UserId: users.id
+//             }
+//         })
+//         .then( robotMatch => {
+//             model.Robot.findAll({
+//                 include: [model.Match],
+//                 where: {
+//                     UserId: users.id
+//                 }
+//             })
+//             .then( matches => {
+//                 // res.send({
+//                 //     users:users,
+//                 //     robotMatch: robotMatch,
+//                 //     matches: matches
+//                 // })
+
+//                 res.render('home',{
+//                     users:users,
+//                     robotMatch: robotMatch,
+//                     matches: matches
+//                 })
+//             }) 
+//         })
+//     })
+// })
 
 
 module.exports = router
