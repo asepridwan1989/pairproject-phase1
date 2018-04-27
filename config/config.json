@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "postgres",
+    "username": "pgdata",
     "password": "postgres",
-    "database": "robot_development",
+    "database": "robotbattle",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

@@ -1,0 +1,42 @@
+
+<!-- <%# include ../partials/header.ejs%> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Robot Battle Arena</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<a href="/user">User</a> | <a href="/matches">Match</a> | <a href="/robot">Robot</a>
+    <h2>Name : <%= match.name%></h2>
+    <h4>Battle Date: <%= match.dateBattle %></h4>
+    <h4>Location: <%= match.location %></h4>
+    <h4>Participan:</h4>
+    <h4><%for (let j = 0; j < robot.length; j++){%>
+      <%=j+1%>. <%=robot[j].name%> : <%=robot[j].RobotMatches[0].status%> <br>
+    <% }%></h4>
+    <br>WAR chat<br>
+    <%for (let k = 0; k < komen.length; k++){%>
+      <%=komen[k].poster%> wrote : <%=komen[k].comment%> <br>
+    <% }%>
+    <br><br>
+    <form action="/matches/<%=match.id%>/detail" method="post">
+      <textarea rows="4" cols="50" name="komentator">
+
+      </textarea>
+
+      <input type='submit' value='Submit'>
+    </form>
+
+
+  <div class="container">
+
+  </div>
+
+<!-- <%# include ../partials/header.ejs%> -->
+</body>
+</html>
