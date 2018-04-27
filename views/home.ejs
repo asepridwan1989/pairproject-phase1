@@ -11,7 +11,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<a href="/user">User</a> | <a href="/matches">Match</a> | <a href="/robot">Robot</a>
 <div class="container">
     <h2>User : <%= users.name%></h2>
     <h4>Battle Point: <%= users.battlepoint %></h4>
@@ -24,7 +24,7 @@
               <input type="text" class="form-control" name="name">
             </div>
             <button type="submit" class="btn btn-default">Add Robot</button>
-          </form>  
+          </form>
     <table class="table">
       <thead>
         <tr>
@@ -75,7 +75,7 @@
               <td><%= tanding.dateBattle %></td>
             </tr>
             <% }) %>
-        <% }) %> 
+        <% }) %>
       </tbody>
     </table>
 
