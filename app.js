@@ -30,11 +30,12 @@ app.use(function(req, res, next) {
 
 app.set('view engine', 'ejs')
 
+
 // ROUTING
 const index = require('./routes/index')
 const register = require('./routes/register')
 const robot = require('./routes/robot/robot')
-const logout = require('./routes/logout') 
+const logout = require('./routes/logout')
 const user = require('./routes/users/user')
 const bot = require('./routes/robot')
 const userMatch = require('./routes/userMatch')
@@ -46,5 +47,6 @@ app.use('/logout', logout)
 app.use('/user', authentication, user)
 app.use('/bot', authentication, bot)
 app.use('/userMatch', authentication, userMatch)
+app.use('/matches', authentication,match)
 
-app.listen(3000, () => console.log('ini server, app listening on port 3000!'))
+app.listen(3003, () => console.log('ini server, app listening on port 3000!'))

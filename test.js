@@ -1,31 +1,16 @@
+const express           = require('express')
+const app               = express()
+const bodyParser        = require('body-parser')
+const session           = require('express-session')
+const authentication    = require('./middlewares/authentication')
+const model             = require('./models')
+const checkLogin        = require('./helpers/checkLogin')
+const match = require('./routes/matchs/match')
+app.use(bodyParser.urlencoded({ extended: false }))
+// app.use(bodyParser.json())
 
-const express = require('express')
-const router = express()
-// const bodyParser = require('body-parser')
-// const model = require('../../models')
-var Sequelize = require('sequelize');
-const Op = Sequelize.Op;
-const {Robot,User,RobotMatch,Match} = require('./models')
+app.set('view engine', 'ejs')
 
+app.use('/matches', match)
 
-Robot.findOne({
-  include:[{
-    model: Match,
-    on: {
-      id:1
-    }
-  }]
-})
-.then( robots => {
-  console.log(robots)
-})
-// .then(robotUser=>{
-//     Robot.findAll({
-//       include:[RobotMatch]
-//     })
-//     .then(alldata=>{
-//       console.log('=========================>user',robotUser)
-//       console.log('========================>data',alldata)
-//     })
-// }) 
-
+app.listen(3002, () => console.log('ini server, app listening on port 3000!'))
