@@ -1,0 +1,42 @@
+<!doctype html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Match</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+ <body>
+   <a href="/user">User</a> | <a href="/matches">Match</a> | <a href="/robot">Robot</a>
+     <h1>Match</h1>
+
+     <h3>List Matches</h3>
+     <table>
+         <tr>
+             <th>Name</th>
+             <th>Participan</th>
+             <th>Location</th>
+             <th>Bet Point</th>
+             <th>Status</th>
+             <th>Date Battle</th>
+             <th>Detail</th>
+         </tr>
+         <%for (let i = 0; i < matches.length; i++){%>
+             <tr>
+                 <td><%=matches[i].name%></td>
+                 <td><%for (let j = 0; j < matches[i].Robots.length; j++){%>
+                   <%=j+1%>. <%=matches[i].Robots[j].name%><br>
+                 <% }%></td>
+                 <td><%=matches[i].location%></td>
+                 <td><%=matches[i].betPoint%></td>
+                 <td><%=matches[i].status%></td>
+                 <td><%=matches[i].dateBattle%></td>
+                 <td><a href="/matches/<%=matches[i].id%>/detail">detail</a></td>
+             </tr>
+        <% }%>
+
+
+     </table>
+
+
+ </body>

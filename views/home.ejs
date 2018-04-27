@@ -1,0 +1,86 @@
+
+<!-- <%# include ../partials/header.ejs%> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Robot Battle Arena</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<a href="/user">User</a> | <a href="/matches">Match</a> | <a href="/robot">Robot</a>
+<div class="container">
+    <h2>User : <%= users.name%></h2>
+    <h4>Battle Point: <%= users.battlepoint %></h4>
+    <h4>Win Rate: <%= winRateUser(matches).winUserrate %>%</h4>
+
+    <p><b>Robot</b></p>
+        <form action="/bot/add" method="POST">
+            <div class="form-group">
+              <label>Robot Name:</label>
+              <input type="text" class="form-control" name="name">
+            </div>
+            <button type="submit" class="btn btn-default">Add Robot</button>
+          </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Robot Name</th>
+          <th>Total Match</th>
+          <th>Winner Rate</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.Robots.forEach(function(robot,idx){ %>
+          <tr>
+              <td><%= robot.name%></td>
+              <td><%= robotMatch[idx].RobotMatches.length%></td>
+              <td><%= winRate(robotMatch[idx].RobotMatches) %> %</td>
+              <td>
+                <button type="submit" class="btn btn-default">Edit</button>
+              </td>
+              <td>
+                <button type="submit" class="btn btn-default">Delete</button>
+              </td>
+            </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+    <p><b>Match</b></p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Match Name</th>
+          <th>Robot Name</th>
+          <th>Status</th>
+          <th>Bet Point</th>
+          <th>Locaation</th>
+          <th>Battle Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% matches.forEach(function(match, idy){ %>
+            <% match.Matches.forEach(function(tanding, idx){ %>
+            <tr>
+              <td><%= tanding.name %></td>
+              <td><%= match.name %></td>
+              <td><%= robotMatch[idy].RobotMatches[idx].status %></td>
+              <td><%= tanding.betPoint.toLocaleString() %></td>
+              <td><%= tanding.location %></td>
+              <td><%= tanding.dateBattle %></td>
+            </tr>
+            <% }) %>
+        <% }) %>
+      </tbody>
+    </table>
+
+  </div>
+
+<!-- <%# include ../partials/header.ejs%> -->
+</body>
+</html>
