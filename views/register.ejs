@@ -1,10 +1,10 @@
 <% include ./partials/header.ejs%>
-
+<div class="main">
 <div class="container-fluid">
-        <h1>Here.... Register first!!! </h1>
         <div class="row">
-          <div class="col-sm-6" style="background-color:lavender;">
-            <h3></h3>
+                <div class="col-sm-4"></div>   
+          <div class="col-sm-4" style="background-color:lavender;">
+            <h3>Register</h3>
             <form action="/register" method="POST">
                 <div class="form-group">
                     <input type="text" class="form-control" id="email" placeholder="Enter username" name="userName">
@@ -18,9 +18,10 @@
             <h3></h3>
               
           </div>
+          <div class="col-sm-4"></div> 
         </div>
 </div>
       
-
+</div>
 
 <% include ./partials/footer.ejs%>

@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Match.associate = function(models) {
     // associations can be defined here
+    Match.hasMany(models.RobotMatch)
     Match.belongsToMany(models.Robot,{through : models.RobotMatch})
   };
   return Match;
