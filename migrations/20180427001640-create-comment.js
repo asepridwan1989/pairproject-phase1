@@ -1,33 +1,33 @@
 'use strict';
-
-const { sequelize } = require('../models')
-
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Robots', {
+    return queryInterface.createTable('Comments', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      poster: {
         type: Sequelize.STRING
       },
-      UserId: {
+      MatchId: {
         type: Sequelize.INTEGER
       },
+      comment: {
+        type: Sequelize.TEXT
+      },
       createdAt: {
-        type: Sequelize.DATE,
-        defaultValue: sequelize.literal('NOW()')
+        allowNull: false,
+        type: Sequelize.DATE
       },
       updatedAt: {
-        type: Sequelize.DATE,
-        defaultValue: sequelize.literal('NOW()')
+        allowNull: false,
+        type: Sequelize.DATE
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Robots');
+    return queryInterface.dropTable('Comments');
   }
 };
